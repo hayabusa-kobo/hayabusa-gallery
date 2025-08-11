@@ -1,0 +1,369 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: #1f2937;
+    color: #e1e1e1;
+    min-height: 100vh;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* ヘッダー */
+.header {
+    background: #1f2937;
+    padding: 80px 20px 60px;
+    text-align: center;
+    border-bottom: 1px solid #374151;
+}
+
+.header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8em;
+    color: #ffffff;
+    margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.header-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.header-link {
+    display: inline-block;
+    background: transparent;
+    color: #e1e1e1;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 400;
+    font-size: 0.9em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
+    border: 1px solid #4b5563;
+}
+
+.header-link:hover {
+    background: #00aaff;
+    color: #ffffff;
+    border-color: #00aaff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 170, 255, 0.2);
+}
+
+/* 自己紹介 */
+.about-me {
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 1px solid #374151;
+}
+
+.about-me h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.about-me p {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: #d1d5db;
+}
+
+/* タブメニュー */
+.tab-container {
+    position: sticky;
+    top: 0;
+    background: rgba(31, 41, 55, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 100;
+    padding: 20px 0;
+    border-bottom: 1px solid #374151;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tab-button {
+    background: transparent;
+    color: #9ca3af;
+    border: 1px solid #4b5563;
+    padding: 10px 26px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: 400;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9em;
+    letter-spacing: 0.3px;
+}
+
+.tab-button:hover {
+    border-color: #00aaff;
+    color: #00aaff;
+}
+
+.tab-button.active {
+    background: #00aaff;
+    color: #ffffff;
+    border-color: #00aaff;
+    box-shadow: 0 4px 15px rgba(0, 170, 255, 0.2);
+}
+
+/* ギャラリー */
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.gallery {
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.gallery.active {
+    display: grid;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    background: #2c3e50;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px;
+    opacity: 0.9;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+/* モーダル */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(31, 41, 55, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.modal img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #bbbbbb;
+    font-size: 32px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(55, 65, 81, 0.8);
+}
+
+.close:hover {
+    color: #ffffff;
+    background: rgba(75, 85, 99, 1);
+    transform: scale(1.1);
+}
+
+/* フッター */
+.site-footer {
+    background: #111827;
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 1px solid #374151;
+    margin-top: 60px;
+}
+
+.contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    color: #d1d5db;
+    margin-bottom: 25px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.email-link {
+    display: inline-block;
+    color: #00aaff;
+    text-decoration: none;
+    margin-bottom: 30px;
+    transition: color 0.3s ease;
+}
+
+.email-link:hover {
+    color: #4cc3ff;
+}
+
+.social-links {
+    margin-bottom: 30px;
+}
+
+.social-links a {
+    color: #d1d5db;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #00aaff;
+}
+
+.disclaimer {
+    margin: 40px 20px 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+.copyright {
+    color: #9ca3af;
+    font-size: 0.9em;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1200px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .header {
+        padding: 60px 20px 40px;
+    }
+    
+    .header h1 {
+        font-size: 2.2em;
+    }
+
+    .about-me {
+        padding: 50px 20px;
+    }
+
+    .about-me h2 {
+        font-size: 1.8em;
+    }
+    
+    .tabs {
+        gap: 10px;
+    }
+    
+    .tab-button {
+        padding: 8px 20px;
+        font-size: 0.85em;
+    }
+
+    .gallery-container {
+        padding: 40px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .header {
+        padding: 40px 15px 30px;
+    }
+
+    .gallery-item img {
+        height: 280px;
+    }
+
+    .about-me {
+        padding: 40px 20px;
+    }
+}
